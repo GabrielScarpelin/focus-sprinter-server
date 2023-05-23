@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Servidor do focus sprinter",
   "main": "index.js",
+  "config": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon"
@@ -10,13 +11,15 @@
   "author": "Focus Sprinter Enterprise",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "sequelize-cli": "^6.6.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "sequelize": "^6.31.1",
     "sqlite3": "^5.1.6"
   }
 }

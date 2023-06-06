@@ -149,4 +149,27 @@ app.post("/task", (req, res) => {
   );
 });
 
+app.get('/task', (req, res) => {
+  const token = req.headers.authorization;
+  jwt.verify(
+    token,
+    process.env.PUBLIC_KEY,
+    { algorithms: ["RS256"] },
+    async (err, decoded) => {
+      if (err) {
+        res.json({ validToken: false, error: err }).status(401);
+      } else {
+        console.log(decoded)
+        const tasks = await Tarefas.findAll({
+          where: {
+            userId: decoded.id
+          },
+          order: [['questionsTodo', 'ASC']]
+        })
+        res.json(tasks).status(200)
+      }
+    }
+  );
+})
+
 app.listen(3001);
